@@ -1,9 +1,10 @@
-package com.jobllers.service.joblisting.impl.elasticsearch.Request
+package com.jobllers.service.joblisting.impl.elasticsearch.request
 
 import java.util.UUID
 
-import com.jobllers.models.JobTypeEnum.JobType
-import com.jobllers.models.{CandidateProfile, Job, Salary}
+import com.jobllers.models.job
+import com.jobllers.models.job.JobTypeEnum.JobType
+import com.jobllers.models.job.{CandidateProfile, Job, Salary}
 import org.joda.time.DateTime
 import play.api.libs.json.{Format, Json}
 
@@ -27,7 +28,7 @@ case class JobWithUUID(
                         desiredCandidateProfile: Option[CandidateProfile],
                         additionalInfo: Option[String]
                       ) {
-  def getJob: Job = Job(jobName, dateOfPosting, dateOfJoining, jobType, location, company, keySkills, minExperience,
+  def getJob: Job = job.Job(jobName, dateOfPosting, dateOfJoining, jobType, location, company, keySkills, minExperience,
     maxExperience, industry, functionalArea, roleCategory, role, minSalary, maxSalary, desiredCandidateProfile, additionalInfo)
 
 }

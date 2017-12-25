@@ -1,6 +1,6 @@
-package com.jobllers.models
+package com.jobllers.models.job
 
-import com.jobllers.models.EducationLevelEnum.EducationLevel
+import com.jobllers.models.job.EducationLevelEnum.EducationLevel
 import play.api.libs.json.{Format, Json}
 
 case class Education(

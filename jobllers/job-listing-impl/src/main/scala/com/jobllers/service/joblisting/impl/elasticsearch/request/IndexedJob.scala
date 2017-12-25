@@ -1,6 +1,6 @@
-package com.jobllers.service.joblisting.impl.elasticsearch.Request
+package com.jobllers.service.joblisting.impl.elasticsearch.request
 
-import com.jobllers.models.Job
+import com.jobllers.models.job.Job
 import play.api.libs.json.{Format, Json}
 
 

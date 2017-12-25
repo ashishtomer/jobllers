@@ -1,6 +1,6 @@
-package com.jobllers.models
+package com.jobllers.models.job
 
-import com.jobllers.models.MarksTypeEnum.MarksType
+import com.jobllers.models.job.MarksTypeEnum.MarksType
 import play.api.libs.json.{Format, Json}
 
 case class EducationMarks(

@@ -1,6 +1,6 @@
-package com.jobllers.models
+package com.jobllers.models.job
 
-import com.jobllers.models.JobTypeEnum.JobType
+import com.jobllers.models.job.JobTypeEnum.JobType
 import org.joda.time.DateTime
 import play.api.libs.json.{Format, Json}
 

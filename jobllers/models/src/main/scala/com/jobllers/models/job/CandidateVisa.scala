@@ -1,7 +1,7 @@
-package com.jobllers.models
+package com.jobllers.models.job
 
-import com.jobllers.models.VisaStatusEnum.VisaStatus
-import com.jobllers.models.VisaTypeEnum.VisaType
+import com.jobllers.models.job.VisaStatusEnum.VisaStatus
+import com.jobllers.models.job.VisaTypeEnum.VisaType
 import play.api.libs.json.{Format, Json}
 
 case class CandidateVisa(

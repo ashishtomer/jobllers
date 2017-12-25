@@ -1,7 +1,7 @@
-package com.jobllers.models
+package com.jobllers.models.job
 
-import com.jobllers.models.SalaryCycleEnum.SalaryCycle
-import com.jobllers.models.SalaryTypeEnum.SalaryType
+import com.jobllers.models.job.SalaryCycleEnum.SalaryCycle
+import com.jobllers.models.job.SalaryTypeEnum.SalaryType
 import play.api.libs.json.{Format, Json}
 
 case class Salary(

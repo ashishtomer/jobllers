@@ -21,7 +21,7 @@ lazy val `models` = (project in file("models"))
     ))
   .dependsOn(`common`)
 
-lazy val `web-module` = (project in file("web-module"))
+/*lazy val `web-module` = (project in file("web-module"))
   .enablePlugins(PlayScala && LagomPlay)
   .settings(
     version := "1.0-SNAPSHOT",
@@ -30,7 +30,7 @@ lazy val `web-module` = (project in file("web-module"))
       macwire,
       scalaTest
     ))
-  .dependsOn(`models`)
+  .dependsOn(`models`)*/
 
 lazy val `job-listing-api` = (project in file("job-listing-api"))
   .settings(

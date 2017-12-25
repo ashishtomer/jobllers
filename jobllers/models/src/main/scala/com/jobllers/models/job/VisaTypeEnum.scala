@@ -1,4 +1,4 @@
-package com.jobllers.models
+package com.jobllers.models.job
 
 import com.jobllers.common.util.json.EnumJsonUtil
 import play.api.libs.json.{Reads, Writes}

@@ -1,4 +1,4 @@
-package com.jobllers.models
+package com.jobllers.models.job
 
 import play.api.libs.json.{Format, Json}
 

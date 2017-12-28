@@ -12,6 +12,6 @@ class JobScrapperActor extends Actor {
     case jobSite: Naukri ⇒ scrapJobSite(jobSite.linkExtractor)
   }
 
-  private def scrapJobSite(linkExtractor: SeedLinkExtractor): Map[String, String] = linkExtractor.getJobsSeedLinks()
+  private def scrapJobSite(linkExtractor: SeedLinkExtractor): List[String] = linkExtractor.getJobsSeedLinks()
 
 }

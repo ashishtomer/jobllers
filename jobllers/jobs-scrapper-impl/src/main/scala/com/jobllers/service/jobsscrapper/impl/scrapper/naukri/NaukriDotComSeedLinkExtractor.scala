@@ -12,22 +12,22 @@ trait NaukriDotComSeedLinkExtractor extends SeedLinkExtractor with RemoteContent
   import NaukriSeedLinkSelectors._
   implicit val headers =  Headers.naukariHeaders
 
-  def getJobsSeedLinks(): Map[String, String] = getJobLinksByLocation(byLocationsLink) ++
-    byDesignationLinks.foldRight(Map.empty[String, String])((link, map) ⇒ map ++ getJobLinksByDesignation(link)) ++
-    byCompanyLinks.foldRight(Map.empty[String, String])((link, map) ⇒ map ++ getJobLinksByDesignation(link)) ++
+  def getJobsSeedLinks(): List[String] = getJobLinksByLocation(byLocationsLink) ++
+    byDesignationLinks.foldRight(List.empty[String])((link, list) ⇒ list ::: getJobLinksByDesignation(link)) ++
+    byCompanyLinks.foldRight(List.empty[String])((link, list) ⇒ list ::: getJobLinksByDesignation(link)) ++
     getJobLinksByFunctionalAreaCategory(byCategoryLinks) ++ getJobLinksByIndustryCategory(byCategoryLinks) ++
     getTopSkillJobsLinks(byTopSkillsLink)
 
-  def getJobLinksByLocation(uri: String): Map[String, String] = extractLinksBySelector(uri, byLocationSelector)
+  def getJobLinksByLocation(uri: String): List[String] = extractLinksBySelector(uri, byLocationSelector)
 
-  def getTopSkillJobsLinks(uri: String): Map[String, String] = extractLinksBySelector(uri, byTopSkillsSelector)
+  def getTopSkillJobsLinks(uri: String): List[String] = extractLinksBySelector(uri, byTopSkillsSelector)
 
-  def getJobLinksByDesignation(uri: String): Map[String, String] = extractLinksBySelector(uri, byDesignationSelector)
+  def getJobLinksByDesignation(uri: String): List[String] = extractLinksBySelector(uri, byDesignationSelector)
 
-  def getJobLinksByCompany(uri: String): Map[String, String] = extractLinksBySelector(uri, byCompanySelector)
+  def getJobLinksByCompany(uri: String): List[String] = extractLinksBySelector(uri, byCompanySelector)
 
-  def getJobLinksByFunctionalAreaCategory(uri: String): Map[String, String] = extractLinksBySelector(uri, byFunctionalAreaCategorySelector)
+  def getJobLinksByFunctionalAreaCategory(uri: String): List[String] = extractLinksBySelector(uri, byFunctionalAreaCategorySelector)
 
-  def getJobLinksByIndustryCategory(uri: String): Map[String, String] = extractLinksBySelector(uri, byIndustryCategorySelector)
+  def getJobLinksByIndustryCategory(uri: String): List[String] = extractLinksBySelector(uri, byIndustryCategorySelector)
 
 }

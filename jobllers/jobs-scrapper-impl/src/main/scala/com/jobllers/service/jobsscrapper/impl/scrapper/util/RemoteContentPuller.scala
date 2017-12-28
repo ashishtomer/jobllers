@@ -10,18 +10,19 @@ trait RemoteContentPuller {
   private val linkRegex = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+" +
     "([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$"
 
-  def extractLinksBySelector(uri: String, selectorPattern: String)(implicit requestHeaders: Map[String, String]) =
-    getPage(uri).select(selectorPattern)
-      .foldLeft(Map.empty[String, String])((mapOfLinks, link) ⇒ createLinkMap(link) ++ mapOfLinks)
+  def extractLinksBySelector(uri: String, selectorPattern: String)
+                            (implicit requestHeaders: Map[String, String]): List[String] =
+    getLinksFromPage(getPage(uri), selectorPattern)
 
-  def getPage(uri: String)(implicit requestHeaders: Map[String, String]) =
+  def getPage(uri: String)(implicit requestHeaders: Map[String, String]): Document =
     Jsoup.connect(uri).headers(requestHeaders).timeout(60000).get()
 
   def getLinksFromPage(page: Document, selectorPattern: String) = page.select(selectorPattern)
-    .foldLeft(Map.empty[String, String])((mapOfLinks, link) ⇒ createLinkMap(link) ++ mapOfLinks)
+    .foldLeft(List.empty[String])((listOfLinks, link) ⇒ addVerifiedLinkToList(listOfLinks, link))
 
-  private def createLinkMap(link: Element): Map[String, String] =
-    if (link.attr("href").matches(linkRegex)) Map(link.attr("href") -> link.attr("title"))
-    else Map.empty[String, String]
+  private def addVerifiedLinkToList(listOfLinks: List[String], link: Element): List[String] =
+    if (link.attr("href").matches(linkRegex))
+      link.attr("href") +: listOfLinks
+    else listOfLinks
 
 }

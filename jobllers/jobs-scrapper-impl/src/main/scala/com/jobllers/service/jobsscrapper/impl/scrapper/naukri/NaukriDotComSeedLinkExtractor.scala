@@ -14,7 +14,7 @@ trait NaukriDotComSeedLinkExtractor extends SeedLinkExtractor with RemoteContent
 
   def getJobsSeedLinks(): List[String] = getJobLinksByLocation(byLocationsLink) ++
     byDesignationLinks.foldRight(List.empty[String])((link, list) ⇒ list ::: getJobLinksByDesignation(link)) ++
-    byCompanyLinks.foldRight(List.empty[String])((link, list) ⇒ list ::: getJobLinksByDesignation(link)) ++
+    byCompanyLinks.foldRight(List.empty[String])((link, list) ⇒ list ::: getJobLinksByCompany(link)) ++
     getJobLinksByFunctionalAreaCategory(byCategoryLinks) ++ getJobLinksByIndustryCategory(byCategoryLinks) ++
     getTopSkillJobsLinks(byTopSkillsLink)
 

@@ -20,7 +20,7 @@ trait RemoteContentPuller {
   def getLinksFromPage(page: Document, selectorPattern: String) = page.select(selectorPattern)
     .foldLeft(List.empty[String])((listOfLinks, link) ⇒ addVerifiedLinkToList(listOfLinks, link))
 
-  private def addVerifiedLinkToList(listOfLinks: List[String], link: Element): List[String] =
+  def addVerifiedLinkToList(listOfLinks: List[String], link: Element): List[String] =
     if (link.attr("href").matches(linkRegex))
       link.attr("href") +: listOfLinks
     else listOfLinks

@@ -1,6 +1,7 @@
 package com.jobllers.service.jobsscrapper.impl.scrapper.naukri
 
 import com.jobllers.service.jobsscrapper.impl.scrapper.JobScrapper
+import org.joda.time.DateTime
 
 import scala.collection.mutable
 
@@ -16,11 +17,14 @@ trait NaukriJobScrapper extends JobScrapper with NaukriDotComSeedLinkExtractor {
   var jobSiteLinksSet = mutable.LinkedHashSet[String]()
 
   def scrapNaukriJobs: List[String] = {
-    val seedLinks = getJobsSeedLinks()
-    println(s"\nThe total number of the seed links are : ${seedLinks.size}\n")
-    val totalJobLinks = seedLinks.flatMap(getJobLinks)
+    val startTime: Long = DateTime.now().getMillis
+    val seedLinks: List[String] = getJobsSeedLinks()
+    val endTime: Long = DateTime.now().getMillis
+    println(s"\nThe ${seedLinks.size} seed links are extracted in ${endTime - startTime} milliseconds\n")
+    seedLinks
+    /*val totalJobLinks = seedLinks.flatMap(getJobLinks)
     println(s"\nThe difference of the amount of Links - ${jobLinkCounter - jobSiteLinksSet.size}")
-    totalJobLinks.take(100)
+    totalJobLinks.take(100)*/
   }
 
   private def getJobLinks(pageUri: String) = {

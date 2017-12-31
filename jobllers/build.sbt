@@ -63,7 +63,8 @@ lazy val `jobs-scrapper-impl` = (project in file("jobs-scrapper-impl"))
       lagomScaladslServer,
       macwire,
       scalaTest,
-      "org.jsoup" % "jsoup" % "1.11.2"
+      "org.jsoup" % "jsoup" % "1.11.2",
+      "org.elasticsearch.client" % "elasticsearch-rest-high-level-client" % "6.1.1"
     ))
   .dependsOn(`models`, `jobs-scrapper-api`)
 

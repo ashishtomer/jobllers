@@ -1,7 +1,8 @@
 package com.jobllers.service.joblisting.impl.elasticsearch
 
+import com.jobllers.common.models.common.{JobllersResponse, SuccessData, SuccessJobCreationData}
+import com.jobllers.common.models.job.Job
 import com.jobllers.models.common.{JobllersResponse, SuccessData, SuccessJobCreationData}
-import com.jobllers.models.job.Job
 import com.jobllers.service.joblisting.impl.elasticsearch.request.IndexedJob
 
 import scala.concurrent.{ExecutionContext, Future}

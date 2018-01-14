@@ -14,10 +14,6 @@ import scala.concurrent.Future
 
 class JobsScrapperServiceImpl(actorSystem: ActorSystem) extends JobsScrapperServiceApi with NaukriJobScrapper {
 
-  override def getReport: ServiceCall[NotUsed, String] = ServerServiceCall { nothing ⇒
-    Future.successful("Returning report")
-  }
-
   override def startScrapping(siteName: String): ServiceCall[NotUsed, String] = ServerServiceCall { (requestHeaders, nothing) ⇒
     val successHeaders = ResponseHeader.Ok.withHeaders(List(("Content-Type", "text/html")))
     actorSystem.actorOf(SeedLinkExtractorActor.props) ! SeedPageCSVDirectory(FileName(s"/tmp/jobllers/${siteName}SeedLinkDirectory.csv"))

@@ -1,6 +1,7 @@
 package com.jobllers.service.joblisting.impl
 
-import com.jobllers.models.common.JobllersResponse
+import com.jobllers.common.models.common.JobllersResponse
+import com.jobllers.common.models.job.Job
 import com.jobllers.models.job.Job
 import com.jobllers.service.joblisting.api.JobListingService
 import com.jobllers.service.joblisting.impl.elasticsearch.{ESJobIndexer, ElasticSearchIndexedStore}

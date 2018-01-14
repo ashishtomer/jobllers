@@ -1,7 +1,7 @@
 package com.jobllers.service.jobsscrapper.impl.scrapper.naukri
 
 import com.jobllers.service.jobsscrapper.impl.scrapper.SeedLinkExtractor
-import com.jobllers.service.jobsscrapper.impl.scrapper.util.RemoteContentPuller
+import com.jobllers.service.jobsscrapper.impl.util.RemoteContentPuller
 import org.jsoup.Jsoup
 
 //TODO -- Move values stored in NaukriJobSectionsLinks and NaukriSeedLinkSelectors to environment variables

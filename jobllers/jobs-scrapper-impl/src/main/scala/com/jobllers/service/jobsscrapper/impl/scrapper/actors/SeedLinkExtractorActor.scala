@@ -5,11 +5,11 @@ import com.jobllers.service.jobsscrapper.impl.scrapper.actors.JobLinkExtractorAc
 import com.jobllers.service.jobsscrapper.impl.scrapper.actors.SeedLinkExtractorActor.{FileName, SeedPage, SeedPageCSVDirectory, SeedPageOptional}
 import com.jobllers.service.jobsscrapper.impl.scrapper.actors.SeedLinkExtractorActorChild.{GetSeedLinksFromPage, SendSeedLinks}
 import com.jobllers.service.jobsscrapper.impl.scrapper.naukri.Headers
-import com.jobllers.service.jobsscrapper.impl.scrapper.util.RemoteContentPuller
+import com.jobllers.service.jobsscrapper.impl.util.RemoteContentPuller
 import org.joda.time.DateTime
 import org.jsoup.Jsoup
 
-class SeedLinkExtractorActor extends Actor with RemoteContentPuller {
+class SeedLinkExtractorActor extends Actor {
 
   var numberOfSeedLinks = 0
   var startingMillisec: Long = 0L
@@ -33,7 +33,7 @@ class SeedLinkExtractorActor extends Actor with RemoteContentPuller {
       val seedLinks = sentSeedLinks.linkList
       jobLinkExtractorActorCounter += 1
       context.actorOf(JobLinkExtractorActor.props, s"jobLinkExtractorActor$jobLinkExtractorActorCounter")
-        .tell(JobPageCrawlInfo(seedLinks, "div.srp_container.fl div.row a.content"), self)
+        .tell(JobPageCrawlInfo(seedLinks, "div.srp_container.fl div.row"), self)
       numberOfSeedLinks += seedLinks.size
       println(s"$numberOfSeedLinks links extracted in ${DateTime.now().getMillis - startingMillisec} milliseconds")
 
@@ -61,13 +61,9 @@ object SeedLinkExtractorActor {
   val props = Props(classOf[SeedLinkExtractorActor])
 
   case class FileName(name: String)
-
   case class SeedPage(uri: String, selector: String)
-
   case class SeedPageOptional(optSeedPage: Option[SeedPage])
-
   case class SeedPageList(seedPages: List[Option[SeedPage]])
-
   case class SeedPageCSVDirectory(file: FileName)
 
 }
@@ -92,7 +88,6 @@ class SeedLinkExtractorActorChild extends Actor with RemoteContentPuller {
 object SeedLinkExtractorActorChild {
 
   case class SendSeedLinks(linkList: List[String])
-
   case class GetSeedLinksFromPage(seedPage: SeedPage)
 
 }

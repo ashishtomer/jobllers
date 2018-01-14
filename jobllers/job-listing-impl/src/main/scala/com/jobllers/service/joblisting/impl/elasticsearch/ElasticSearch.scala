@@ -1,7 +1,7 @@
 package com.jobllers.service.joblisting.impl.elasticsearch
 
 import akka.NotUsed
-import com.jobllers.models.job.Job
+import com.jobllers.common.models.job.Job
 import com.jobllers.service.joblisting.impl.elasticsearch.response.{ESDeleteResponse, ESIndexResponse}
 import com.lightbend.lagom.scaladsl.api.Service._
 import com.lightbend.lagom.scaladsl.api.transport.Method

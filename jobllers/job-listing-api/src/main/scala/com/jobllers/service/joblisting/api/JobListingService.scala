@@ -1,6 +1,7 @@
 package com.jobllers.service.joblisting.api
 
-import com.jobllers.models.common.JobllersResponse
+import com.jobllers.common.models.common.JobllersResponse
+import com.jobllers.common.models.job.Job
 import com.jobllers.models.job.Job
 import com.lightbend.lagom.scaladsl.api.transport.Method
 import com.lightbend.lagom.scaladsl.api.{Service, ServiceCall}

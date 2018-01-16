@@ -93,5 +93,4 @@ trait JsonHelper {
       .replace("_y", "Y")
       .replace("_z", "Z")
       .replace(" ", "")
-
 }

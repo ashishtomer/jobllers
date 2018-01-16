@@ -66,3 +66,6 @@ val macwire = "com.softwaremill.macwire" %% "macros" % "2.2.5" % "provided"
 val scalaTest = "org.scalatest" %% "scalatest" % "3.0.1" % Test
 
 lagomUnmanagedServices in ThisBuild += ("elastic-search" -> "http://127.0.0.1:9200")
+
+lagomCassandraEnabled in ThisBuild := false
+lagomUnmanagedServices in ThisBuild := Map("cas_native" -> "http://localhost:9042")
